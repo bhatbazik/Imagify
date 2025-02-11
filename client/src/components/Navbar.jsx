@@ -19,7 +19,7 @@ const Navbar = () => {
             <img src={assets.credit_star} alt="credit" className="w-5" />
             <p className="text-xs sm:-text-sm font-medium text-gray-600">Credits left : 50</p>
           </button>
-            <p className="text-gray-600 max-sm:hidden pl-4">Hi, GreatStack</p>
+            <p className="text-gray-600 max-sm:hidden pl-4">Hi, User</p>
             <div className="relative group">
               <img src={assets.profile_icon} className="w-10 drop-shadow" />
               <div className="absolute hidden group-hover:block top-0 right-0 z-10 text-black rounded pt-12">
