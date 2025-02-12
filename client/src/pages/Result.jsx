@@ -1,26 +1,38 @@
 import { useState } from "react";
 import { assets } from "../assets/assets";
+import { motion } from "framer-motion";
 
 const Result = () => {
   const [image, setImage] = useState(assets.sample_img_1);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
-  const [Loading, setLoading] = useState(false)
-  const [input, setInput] = useState("")
-  const onSubmitHandler = async (e) => {
-
-  }
+  const [Loading, setLoading] = useState(false);
+  const [input, setInput] = useState("");
+  const onSubmitHandler = async (e) => {};
   return (
-    <form onSubmit={onSubmitHandler} className="flex flex-col min-h-[90vh] items-center justify-center">
+    <motion.form
+      initial={{ opacity: 0.2, y: 100 }}
+      transition={{ duration: 1 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      onSubmit={onSubmitHandler}
+      className="flex flex-col min-h-[90vh] items-center justify-center"
+    >
       <div>
         <div className="relative ">
           <img className="max-w-sm rounded" src={image} alt="" />
-          <span className={`absolute bottom-0 left-0 h-1 bg-blue-500 ${Loading ? 'w-full transition-all duration-[10s]' : 'w-0'}`}></span>
+          <span
+            className={`absolute bottom-0 left-0 h-1 bg-blue-500 ${
+              Loading ? "w-full transition-all duration-[10s]" : "w-0"
+            }`}
+          ></span>
         </div>
         <p className={!Loading ? "hidden" : ""}>Loading...</p>
       </div>
       {!isImageLoaded && (
         <div className="flex w-full max-w-xl bg-neutral-500 text-white text-sm p-0.5 mt-10 rounded-full">
-          <input value={input} onChange={e => setInput(e.target.value)}
+          <input
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
             type="text"
             placeholder="Describe what you want to generate"
             className="flex-1 bg-transparent outline-none ml-8 max-sm:w-20 placeholder-color"
@@ -35,9 +47,12 @@ const Result = () => {
       )}
       {isImageLoaded && (
         <div className="flex gap-2 flex-wrap justify-center mt-5">
-          <p onClick={() => {
-            setIsImageLoaded(false)
-          }} className="bg-transparent border border-zinc-900 text-black px-8 py-3 rounded-full cursor-pointer">
+          <p
+            onClick={() => {
+              setIsImageLoaded(false);
+            }}
+            className="bg-transparent border border-zinc-900 text-black px-8 py-3 rounded-full cursor-pointer"
+          >
             Generate Another
           </p>
           <a
@@ -49,7 +64,7 @@ const Result = () => {
           </a>
         </div>
       )}
-    </form>
+    </motion.form>
   );
 };
 
